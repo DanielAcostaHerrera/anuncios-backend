@@ -12,6 +12,7 @@ import { MonedasModule } from './monedas/monedas.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { AnunciosModule } from './anuncios/anuncios.module';
 import { SubcategoriasModule } from './subcategorias/subcategorias.module';
+import { UploadModule } from './upload/upload.module'; // ✅ Importa aquí
 
 @Module({
   imports: [
@@ -24,16 +25,16 @@ import { SubcategoriasModule } from './subcategorias/subcategorias.module';
       csrfPrevention: false,
     }),
 
-    // ❌ No ServeStaticModule porque las fotos estarán en Cloudinary
-
     ProvinciasModule,
     MunicipiosModule,
     MonedasModule,
     CategoriasModule,
     SubcategoriasModule,
     AnunciosModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
