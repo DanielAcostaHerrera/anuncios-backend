@@ -44,7 +44,7 @@ export class AnunciosResolver {
   // ============================================================
   //  OBTENER TODOS (PAGINADO DE 100 EN 100)
   // ============================================================
-  @Query(() => [AnunciosResult])
+  @Query(() => AnunciosResult)
   anuncios(@Args('page', { type: () => Int }) page: number) {
     return this.service.obtenerPaginado(page);
   }
@@ -52,7 +52,7 @@ export class AnunciosResolver {
   // ============================================================
   //  FILTRAR ANUNCIOS
   // ============================================================
-  @Query(() => [AnunciosResult])
+  @Query(() => AnunciosResult)
   filtrarAnuncios(
     @Args('page', { type: () => Int }) page: number,
     @Args('limit', { type: () => Int }) limit: number,
