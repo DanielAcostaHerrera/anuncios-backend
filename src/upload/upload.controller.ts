@@ -1,4 +1,4 @@
-import { Controller, Post, UploadedFile, UseInterceptors, Body } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors, Body, Delete } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
 import { Multer } from 'multer'; // ✅ se mantiene el import
@@ -15,6 +15,12 @@ export class UploadController {
   ) {
     const url = await this.uploadService.uploadImage(file, nombre);
     return { url };
+  }
+
+  @Delete('image')
+  async delete(@Body('url') url: string) {
+    const ok = await this.uploadService.deleteImageByUrl(url);
+    return { deleted: ok };
   }
 }
 
