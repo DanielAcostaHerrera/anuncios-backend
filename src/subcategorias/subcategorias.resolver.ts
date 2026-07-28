@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { SubcategoriasService } from './subcategorias.service';
 import { SubcategoriaType } from './types/subcategoria.type';
 
@@ -7,10 +7,13 @@ export class SubcategoriasResolver {
   constructor(private readonly service: SubcategoriasService) {}
 
   // ============================================================
-  //  LISTAR SUBCATEGORÍAS
+  //  LISTAR SUBCATEGORÍAS POR CATEGORÍA
   // ============================================================
   @Query(() => [SubcategoriaType])
-  subcategorias() {
-    return this.service.obtenerSubcategorias();
+  subcategorias(
+    @Args('IdCategoria', { type: () => Int }) IdCategoria: number,
+  ) {
+    return this.service.obtenerSubcategoriasPorCategoria(IdCategoria);
   }
 }
+
