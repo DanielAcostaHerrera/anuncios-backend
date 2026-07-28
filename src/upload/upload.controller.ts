@@ -1,7 +1,7 @@
-import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors, Body } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadService } from './upload.service';
-import { Multer } from 'multer';
+import { Multer } from 'multer'; // ✅ se mantiene el import
 
 @Controller('upload')
 export class UploadController {
@@ -9,12 +9,17 @@ export class UploadController {
 
   @Post()
   @UseInterceptors(FileInterceptor('file'))
-  async upload(@UploadedFile() file: Express.Multer.File) {
-    // ✅ Pasamos el objeto completo, no file.path
-    const url = await this.uploadService.uploadImage(file);
+  async upload(
+    @UploadedFile() file: Express.Multer.File,
+    @Body('nombre') nombre?: string, // ✅ parámetro opcional
+  ) {
+    const url = await this.uploadService.uploadImage(file, nombre);
     return { url };
   }
 }
+
+
+
 
 
 

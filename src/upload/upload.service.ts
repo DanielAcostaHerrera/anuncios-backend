@@ -4,10 +4,14 @@ import streamifier from 'streamifier';
 
 @Injectable()
 export class UploadService {
-  async uploadImage(file: Express.Multer.File): Promise<string> {
+  async uploadImage(file: Express.Multer.File, nombre?: string): Promise<string> {
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: 'anuncios' }, // opcional, organiza en carpeta lógica
+        {
+          folder: 'anuncios',
+          public_id: nombre,   // ✅ si viene, se usa como nombre
+          overwrite: true,     // opcional: reemplaza si ya existe
+        },
         (error, result) => {
           if (error) return reject(error);
           if (!result) return reject(new Error('No se recibió resultado de Cloudinary'));
@@ -15,11 +19,12 @@ export class UploadService {
         },
       );
 
-      // ✅ Usamos buffer en vez de path
       streamifier.createReadStream(file.buffer).pipe(uploadStream);
     });
   }
 }
+
+
 
 
 
