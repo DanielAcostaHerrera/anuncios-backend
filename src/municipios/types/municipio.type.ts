@@ -9,5 +9,5 @@ export class MunicipioType {
   nombre: string;
 
   @Field(() => Int)
-  provinciaId: number;
+  IdProvincia: number;
 }

@@ -14,10 +14,10 @@ export class MunicipiosService {
   //  LISTAR MUNICIPIOS DE UNA PROVINCIA
   // ============================================================
   async obtenerMunicipiosPorProvincia(
-    provinciaId: number,
+    IdProvincia: number,
   ): Promise<Municipio[]> {
     return this.municipioModel
-      .find({ provinciaId }, { _id: 0 })
+      .find({ IdProvincia }, { _id: 0 })
       .sort({ nombre: 1 })
       .exec();
   }

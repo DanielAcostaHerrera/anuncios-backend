@@ -10,7 +10,7 @@ export class Municipio extends Document {
   nombre: string;
 
   @Prop({ required: true })
-  provinciaId: number; // 🔹 clave para filtrar
+  IdProvincia: number; 
 }
 
 export const MunicipioSchema = SchemaFactory.createForClass(Municipio);

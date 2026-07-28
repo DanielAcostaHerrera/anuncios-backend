@@ -10,7 +10,7 @@ export class MunicipiosResolver {
   //  LISTAR MUNICIPIOS DE UNA PROVINCIA
   // ============================================================
   @Query(() => [MunicipioType])
-  municipios(@Args('provinciaId', { type: () => Int }) provinciaId: number) {
-    return this.service.obtenerMunicipiosPorProvincia(provinciaId);
+  municipios(@Args('IdProvincia', { type: () => Int }) IdProvincia: number) {
+    return this.service.obtenerMunicipiosPorProvincia(IdProvincia);
   }
 }
