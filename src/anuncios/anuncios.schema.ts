@@ -25,6 +25,9 @@ export class Anuncio extends Document {
   Categoria: number;
 
   @Prop({ required: true })
+  IdSubcategoria: number; 
+
+  @Prop({ required: true })
   Provincia: number;
 
   @Prop({ required: true })
@@ -35,6 +38,9 @@ export class Anuncio extends Document {
 
   @Prop({ type: String, required: false })
   Fijo?: string;
+
+  @Prop({ required: true })
+  FechaActualizacion: Date;
 }
 
 export const AnuncioSchema = SchemaFactory.createForClass(Anuncio);
