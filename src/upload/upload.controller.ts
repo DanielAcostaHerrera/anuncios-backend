@@ -10,8 +10,12 @@ export class UploadController {
   @Post()
   @UseInterceptors(FileInterceptor('file'))
   async upload(@UploadedFile() file: Express.Multer.File) {
-    const url = await this.uploadService.uploadImage(file.path);
+    // ✅ Pasamos el objeto completo, no file.path
+    const url = await this.uploadService.uploadImage(file);
     return { url };
   }
 }
+
+
+
 
