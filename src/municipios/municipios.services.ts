@@ -21,4 +21,14 @@ export class MunicipiosService {
       .sort({ nombre: 1 })
       .exec();
   }
+
+  // ============================================================
+  //  OBTENER UN MUNICIPIO POR ID
+  // ============================================================
+  async obtenerMunicipioPorId(Id: number): Promise<Municipio | null> {
+    return this.municipioModel
+      .findOne({ Id }, { _id: 0 })
+      .exec();
+  }
 }
+

@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { MonedasService } from './monedas.service';
 import { MonedaType } from './types/moneda.type';
 
@@ -13,4 +13,13 @@ export class MonedasResolver {
   monedas() {
     return this.service.obtenerMonedas();
   }
+
+  // ============================================================
+  //  OBTENER UNA MONEDA POR ID
+  // ============================================================
+  @Query(() => MonedaType, { nullable: true })
+  moneda(@Args('Id', { type: () => Int }) Id: number) {
+    return this.service.obtenerMonedaPorId(Id);
+  }
 }
+

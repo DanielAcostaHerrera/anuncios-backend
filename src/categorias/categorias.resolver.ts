@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { CategoriasService } from './categorias.service';
 import { CategoriaType } from './types/categoria.type';
 
@@ -13,4 +13,13 @@ export class CategoriasResolver {
   categorias() {
     return this.service.obtenerCategorias();
   }
+
+  // ============================================================
+  //  OBTENER UNA CATEGORÍA POR ID
+  // ============================================================
+  @Query(() => CategoriaType, { nullable: true })
+  categoria(@Args('Id', { type: () => Int }) Id: number) {
+    return this.service.obtenerCategoriaPorId(Id);
+  }
 }
+

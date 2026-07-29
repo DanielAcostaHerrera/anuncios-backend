@@ -48,8 +48,6 @@ export class UploadService {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
           folder: 'anuncios',
-          public_id: nombre,
-          overwrite: true,
           resource_type: 'image',
         },
         (error, result) => {

@@ -13,11 +13,23 @@ export class SubcategoriasService {
   // ============================================================
   //  LISTAR SUBCATEGORÍAS POR CATEGORÍA
   // ============================================================
-  async obtenerSubcategoriasPorCategoria(IdCategoria: number): Promise<Subcategoria[]> {
+  async obtenerSubcategoriasPorCategoria(
+    IdCategoria: number,
+  ): Promise<Subcategoria[]> {
     return this.subcategoriaModel
       .find({ IdCategoria }, { _id: 0 })
       .sort({ nombre: 1 })
       .exec();
   }
+
+  // ============================================================
+  //  OBTENER UNA SUBCATEGORÍA POR ID
+  // ============================================================
+  async obtenerSubcategoriaPorId(Id: number): Promise<Subcategoria | null> {
+    return this.subcategoriaModel
+      .findOne({ Id }, { _id: 0 })
+      .exec();
+  }
 }
+
 

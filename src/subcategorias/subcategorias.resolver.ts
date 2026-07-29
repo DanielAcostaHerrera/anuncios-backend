@@ -15,5 +15,14 @@ export class SubcategoriasResolver {
   ) {
     return this.service.obtenerSubcategoriasPorCategoria(IdCategoria);
   }
+
+  // ============================================================
+  //  OBTENER UNA SUBCATEGORÍA POR ID
+  // ============================================================
+  @Query(() => SubcategoriaType, { nullable: true })
+  subcategoria(@Args('Id', { type: () => Int }) Id: number) {
+    return this.service.obtenerSubcategoriaPorId(Id);
+  }
 }
+
 

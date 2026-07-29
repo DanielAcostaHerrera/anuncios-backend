@@ -13,4 +13,13 @@ export class MunicipiosResolver {
   municipios(@Args('IdProvincia', { type: () => Int }) IdProvincia: number) {
     return this.service.obtenerMunicipiosPorProvincia(IdProvincia);
   }
+
+  // ============================================================
+  //  OBTENER UN MUNICIPIO POR ID
+  // ============================================================
+  @Query(() => MunicipioType, { nullable: true })
+  municipio(@Args('Id', { type: () => Int }) Id: number) {
+    return this.service.obtenerMunicipioPorId(Id);
+  }
 }
+

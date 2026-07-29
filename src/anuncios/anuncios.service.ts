@@ -60,7 +60,7 @@ export class AnunciosService {
     const nuevo = new this.anuncioModel({
       Id: nextId,
       ...data,
-      FechaActualizacion: new Date(), // ⭐ NUEVO
+      FechaActualizacion: new Date(), 
     });
 
     return nuevo.save();
@@ -72,7 +72,7 @@ export class AnunciosService {
   async actualizarAnuncio(
     data: ActualizarAnuncioInput,
   ): Promise<Anuncio | null> {
-    data.FechaActualizacion = new Date(); // ⭐ NUEVO
+    data.FechaActualizacion = new Date();
 
     return this.anuncioModel.findOneAndUpdate(
       { Id: data.Id },

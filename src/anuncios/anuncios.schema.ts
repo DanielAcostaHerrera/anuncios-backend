@@ -34,6 +34,9 @@ export class Anuncio extends Document {
   Municipio: number;
 
   @Prop({ type: String, required: false })
+  NombreAnunciante?: string;
+
+  @Prop({ type: String, required: false })
   Celular?: string;
 
   @Prop({ type: String, required: false })

@@ -34,6 +34,9 @@ export class ActualizarAnuncioInput extends PartialType(CrearAnuncioInput) {
   Municipio?: number;
 
   @Field({ nullable: true })
+  NombreAnunciante?: string;
+
+  @Field({ nullable: true })
   Celular?: string;
 
   @Field({ nullable: true })

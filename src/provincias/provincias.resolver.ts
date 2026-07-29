@@ -1,4 +1,4 @@
-import { Resolver, Query } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { ProvinciasService } from './provincias.service';
 import { ProvinciaType } from './types/provincia.type';
 
@@ -13,4 +13,13 @@ export class ProvinciasResolver {
   provincias() {
     return this.service.obtenerProvincias();
   }
+
+  // ============================================================
+  //  OBTENER UNA PROVINCIA POR ID
+  // ============================================================
+  @Query(() => ProvinciaType, { nullable: true })
+  provincia(@Args('Id', { type: () => Int }) Id: number) {
+    return this.service.obtenerProvinciaPorId(Id);
+  }
 }
+
