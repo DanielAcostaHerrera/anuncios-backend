@@ -125,6 +125,7 @@ export class AnunciosService {
       page,
       limit,
       titulo,
+      moneda,
       precioMin,
       precioMax,
       provincia,
@@ -147,7 +148,7 @@ export class AnunciosService {
     }
 
     if (subcategoria !== undefined) {
-      query.IdSubcategoria = subcategoria;   // ⭐ NUEVO
+      query.IdSubcategoria = subcategoria;
     }
 
     if (provincia !== undefined) {
@@ -167,6 +168,10 @@ export class AnunciosService {
       if (fechaMax) {
         query.FechaActualizacion.$lte = new Date(fechaMax);
       }
+    }
+
+    if (moneda !== undefined) {
+      query.Moneda = moneda;
     }
 
     let anuncios = await this.anuncioModel
