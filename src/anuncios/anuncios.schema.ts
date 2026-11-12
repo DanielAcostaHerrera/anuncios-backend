@@ -44,6 +44,9 @@ export class Anuncio extends Document {
 
   @Prop({ required: true })
   FechaActualizacion: Date;
+
+  @Prop({ type: Boolean, default: true })
+  Disponible: boolean;
 }
 
 export const AnuncioSchema = SchemaFactory.createForClass(Anuncio);

@@ -43,4 +43,7 @@ export class AnuncioType {
 
   @Field()
   FechaActualizacion: Date;
+
+  @Field(() => Boolean)
+  Disponible: boolean;
 }

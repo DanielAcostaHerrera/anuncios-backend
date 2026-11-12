@@ -40,4 +40,7 @@ export class CrearAnuncioInput {
 
   @Field()
   FechaActualizacion: Date;
+
+  @Field(() => Boolean, { nullable: true, defaultValue: true })
+  Disponible?: boolean;
 }

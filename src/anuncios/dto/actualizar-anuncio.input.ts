@@ -44,4 +44,7 @@ export class ActualizarAnuncioInput extends PartialType(CrearAnuncioInput) {
 
   @Field({ nullable: true })
   FechaActualizacion?: Date;
+
+  @Field(() => Boolean, { nullable: true })
+  Disponible?: boolean;
 }
